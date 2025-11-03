@@ -1,0 +1,301 @@
+Lab 1
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5, b = 10, c = 5;
+
+    cout << "a == b: " << (a == b) << endl;
+    cout << "a != c: " << (a != c) << endl;
+    cout << "a < b: " << (a < b) << endl;
+    cout << "b > c: " << (b > c) << endl;
+    cout << "(a + c) <= b: " << ((a + c) <= b) << endl;
+
+    cout << "'A' < 'a': " << ('A' < 'a') << endl;
+
+    cout << "\nExplanation: In ASCII, uppercase 'A' has a smaller value than lowercase 'a'.\n";
+    cout << "So the expression ('A' < 'a') is TRUE, which means it outputs 1.\n";
+
+    return 0;
+}
+
+
+
+1. What data types can be compared using relational operators?
+
+Relational operators can be used to compare numeric data types such as int, float, double, and also characters (char).
+They can also compare Boolean values and even pointers, but typically they are used with numbers and characters.
+
+2. How does ASCII value affect character comparisons?
+
+Each character has a corresponding ASCII value (American Standard Code for Information Interchange).
+When characters are compared, C++ uses their ASCII values, not their actual letters.
+
+For example:
+
+'A' has an ASCII value of 65
+
+'a' has an ASCII value of 97
+
+So, 'A' < 'a' is true (1) because 65 < 97.
+
+3. Why does C++ return 1 for true and 0 for false?
+
+C++ treats Boolean values as integers internally:
+
+true is represented as 1
+
+false is represented as 0
+
+This makes it easier for C++ to use Boolean expressions in mathematical and logical operations.
+
+
+Lab 2
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (num > 0) {
+        cout << "The number is positive." << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+1. What happens if the input is 0 or negative?
+
+If the input is 0 or a negative number, the condition num > 0 is false, so the program does not display any message.
+Nothing happens because the statement inside the if block only runs when the condition is true.
+
+2. How does the program decide whether to execute the statement?
+
+The program evaluates the condition inside the parentheses of the if statement.
+
+If the condition (num > 0) is true, the statement inside the if block executes.
+
+If it is false, the statement is skipped.
+
+In this case
+if (num > 0)
+means “execute the statement only if num is greater than 0.”
+
+Lab 3
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int grade;
+
+    cout << "Enter grade: ";
+    cin >> grade;
+
+    // Two-way selection using if...else
+    if (grade >= 75) {
+        cout << "Result: Pass" << endl;
+    } else {
+        cout << "Result: Fail" << endl;
+    }
+
+    return 0;
+}
+
+
+
+1. What happens if the input is 0 or negative?
+
+If the input is 0 or a negative number, the condition num > 0 is false, so the program does not display any message.
+Nothing happens because the statement inside the if block only runs when the condition is true.
+
+2. Can you nest another if inside this structure?
+Yes, you can. This is called a nested if, where one if statement is placed inside another. It’s useful when you need to check more specific conditions. For example, if a student passes, you can add another if inside to check if the grade is 100 and display something like “Perfect score!”
+
+Lab 4
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int grade;
+
+    // Ask for student's grade
+    cout << "Enter grade: ";
+    cin >> grade;
+
+    // Compound statement using braces {}
+    if (grade >= 75) {
+        cout << "Result: Pass" << endl;
+        cout << "Congratulations!" << endl;
+        cout << "Keep up the good work." << endl;
+    } else {
+        cout << "Result: Fail" << endl;
+    }
+
+    return 0;
+}
+
+
+
+1. What error occurs if braces are omitted?
+
+If I remove the braces {}, only the first statement after the if will be considered part of it. That means only one line will run when the condition is true, and the other lines will always run no matter what. Sometimes it might not show an actual “error,” but it will make the program behave incorrectly not the way we expect it to.
+
+2. Why are compound statements useful in decision-making?
+
+Compound statements are useful because they let us group several lines of code together that should all run under the same condition.
+For example, when the student passes, we don’t just want to show “Pass” we also want to display extra messages like “Congratulations!” and “Keep up the good work.” By using {} braces, we can make sure those statements all belong to the same decision.
+
+Lab 5
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int grade;
+
+    // Ask for student's grade
+    cout << "Enter grade: ";
+    cin >> grade;
+
+    // Nested if statements to determine remark
+    if (grade >= 90 && grade <= 100) {
+        cout << "Remark: Excellent" << endl;
+    } else {
+        if (grade >= 80 && grade <= 89) {
+            cout << "Remark: Very Good" << endl;
+        } else {
+            if (grade >= 75 && grade <= 79) {
+                cout << "Remark: Satisfactory" << endl;
+            } else {
+                cout << "Remark: Fail" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
+
+
+1. How does nesting differ from a simple if-else chain?
+
+In a simple if-else chain, the program checks each condition one by one in a straight line.
+But in nested if statements, an if statement is placed inside another if or else, allowing the program to make more specific decisions step by step.
+It’s like saying, “If this is true, then check another condition next.”
+Nesting helps when decisions depend on a previous condition being true.
+
+2. What’s the advantage of using nested conditions?
+
+The main advantage is that nested conditions make the program more flexible and detailed when handling multiple possibilities.
+They let you break down decisions into smaller checks, so your program can respond more accurately.
+For example, instead of just “Pass” or “Fail,” you can have “Excellent,” “Very Good,” or “Satisfactory,” depending on how high the grade is.
+
+
+Lab 6
+
+#include <iostream>
+#include <cmath> // for M_PI and pow()
+using namespace std;
+
+int main() {
+    int choice;
+    double radius, length, width, area;
+
+    cout << "=== Simple Menu ===" << endl;
+    cout << "1. Compute Area of Circle" << endl;
+    cout << "2. Compute Area of Rectangle" << endl;
+    cout << "3. Exit" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            cout << "\nEnter radius: ";
+            cin >> radius;
+            area = M_PI * pow(radius, 2);
+            cout << "Area of Circle: " << area << endl;
+            break;
+
+        case 2:
+            cout << "\nEnter length: ";
+            cin >> length;
+            cout << "Enter width: ";
+            cin >> width;
+            area = length * width;
+            cout << "Area of Rectangle: " << area << endl;
+            break;
+
+        case 3:
+            cout << "\nGoodbye!" << endl;
+            break;
+
+        default:
+            cout << "\nInvalid choice." << endl;
+            break;
+    }
+
+    return 0;
+}
+
+1. What happens if you omit a break statement?
+
+If you remove a break statement, the program doesn’t stop after that case — it continues to execute the next one, even if the condition doesn’t match.
+This is called “fall-through”, and it can cause unexpected results unless it’s done intentionally. For example, if you forget a break after case 1, it might also run case 2 right after.
+
+2. When would you prefer a switch over nested ifs?
+
+A switch statement is better when you’re comparing a single variable to several possible values — like menu options or user choices.
+It makes your code look cleaner, easier to read, and more organized compared to writing many if and else if statements.
+You’d usually use switch for fixed options like numbers or characters rather than complex conditions.
+
+Lab 7
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int grade, courseCode;
+
+    cout << "Enter grade (0-100): ";
+    cin >> grade;
+
+    cout << "Enter course code (1-3): ";
+    cin >> courseCode;
+
+    // Determine Pass or Fail using if-else
+    if (grade >= 75 && grade <= 100) {
+        cout << "\nResult: Pass" << endl;
+    } else if (grade >= 0 && grade < 75) {
+        cout << "\nResult: Fail" << endl;
+    } else {
+        cout << "\nInvalid grade input." << endl;
+        return 0; // stop if invalid input
+    }
+
+    // Determine course name using switch
+    switch (courseCode) {
+        case 1:
+            cout << "Course: Programming Fundamentals" << endl;
+            break;
+        case 2:
+            cout << "Course: Data Structures" << endl;
+            break;
+        case 3:
+            cout << "Course: Database Management" << endl;
+            break;
+        default:
+            cout << "Invalid course code." << endl;
+            break;
+    }
+
+    return 0;
+}
